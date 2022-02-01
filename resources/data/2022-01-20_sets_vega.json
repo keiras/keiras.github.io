@@ -1,0 +1,657 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "UpSetJS",
+  "description": "",
+  "datasets": {
+    "sets": [
+      {
+        "name": "1v1",
+        "cardinality": 81774
+      },
+      {
+        "name": "2v2",
+        "cardinality": 100686
+      },
+      {
+        "name": "3v3",
+        "cardinality": 87709
+      },
+      {
+        "name": "4v4",
+        "cardinality": 71778
+      }
+    ],
+    "combinations": [
+      {
+        "name": "1v1",
+        "cardinality": 38759,
+        "sets": [
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "2v2",
+        "cardinality": 25846,
+        "sets": [
+          "2v2"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3 ∩ 2v2)",
+        "cardinality": 19944,
+        "sets": [
+          "4v4",
+          "3v3",
+          "2v2"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3)",
+        "cardinality": 17153,
+        "sets": [
+          "4v4",
+          "3v3"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(2v2 ∩ 1v1)",
+        "cardinality": 15070,
+        "sets": [
+          "2v2",
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(3v3 ∩ 2v2)",
+        "cardinality": 14322,
+        "sets": [
+          "3v3",
+          "2v2"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "4v4",
+        "cardinality": 14133,
+        "sets": [
+          "4v4"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3 ∩ 2v2 ∩ 1v1)",
+        "cardinality": 13867,
+        "sets": [
+          "4v4",
+          "3v3",
+          "2v2",
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "3v3",
+        "cardinality": 11053,
+        "sets": [
+          "3v3"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(3v3 ∩ 2v2 ∩ 1v1)",
+        "cardinality": 8262,
+        "sets": [
+          "3v3",
+          "2v2",
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 2v2)",
+        "cardinality": 2096,
+        "sets": [
+          "4v4",
+          "2v2"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3 ∩ 1v1)",
+        "cardinality": 1877,
+        "sets": [
+          "4v4",
+          "3v3",
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 1v1)",
+        "cardinality": 1429,
+        "sets": [
+          "4v4",
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 2v2 ∩ 1v1)",
+        "cardinality": 1279,
+        "sets": [
+          "4v4",
+          "2v2",
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "(3v3 ∩ 1v1)",
+        "cardinality": 1231,
+        "sets": [
+          "3v3",
+          "1v1"
+        ],
+        "partOf": 1,
+        "nsets": [
+          ""
+        ]
+      },
+      {
+        "name": "1v1",
+        "cardinality": 38759,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "2v2",
+          "3v3",
+          "4v4"
+        ]
+      },
+      {
+        "name": "2v2",
+        "cardinality": 25846,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "1v1",
+          "3v3",
+          "4v4"
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3 ∩ 2v2)",
+        "cardinality": 19944,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "1v1"
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3)",
+        "cardinality": 17153,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "1v1",
+          "2v2"
+        ]
+      },
+      {
+        "name": "(2v2 ∩ 1v1)",
+        "cardinality": 15070,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "3v3",
+          "4v4"
+        ]
+      },
+      {
+        "name": "(3v3 ∩ 2v2)",
+        "cardinality": 14322,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "1v1",
+          "4v4"
+        ]
+      },
+      {
+        "name": "4v4",
+        "cardinality": 14133,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "1v1",
+          "2v2",
+          "3v3"
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3 ∩ 2v2 ∩ 1v1)",
+        "cardinality": 13867,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": []
+      },
+      {
+        "name": "3v3",
+        "cardinality": 11053,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "1v1",
+          "2v2",
+          "4v4"
+        ]
+      },
+      {
+        "name": "(3v3 ∩ 2v2 ∩ 1v1)",
+        "cardinality": 8262,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "4v4"
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 2v2)",
+        "cardinality": 2096,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "1v1",
+          "3v3"
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 3v3 ∩ 1v1)",
+        "cardinality": 1877,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "2v2"
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 1v1)",
+        "cardinality": 1429,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "2v2",
+          "3v3"
+        ]
+      },
+      {
+        "name": "(4v4 ∩ 2v2 ∩ 1v1)",
+        "cardinality": 1279,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "3v3"
+        ]
+      },
+      {
+        "name": "(3v3 ∩ 1v1)",
+        "cardinality": 1231,
+        "partOf": 0,
+        "sets": [
+          ""
+        ],
+        "nsets": [
+          "2v2",
+          "4v4"
+        ]
+      }
+    ]
+  },
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "mark": "bar",
+          "width": 321.2,
+          "height": 144
+        },
+        {
+          "width": 602,
+          "height": 144,
+          "data": {
+            "name": "combinations"
+          },
+          "transform": [
+            {
+              "filter": {
+                "field": "partOf",
+                "equal": 1
+              }
+            }
+          ],
+          "layer": [
+            {
+              "mark": {
+                "type": "bar",
+                "tooltip": true
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "bottom",
+                "dy": -2
+              },
+              "encoding": {
+                "text": {
+                  "field": "cardinality",
+                  "type": "quantitative"
+                }
+              }
+            }
+          ],
+          "encoding": {
+            "x": {
+              "field": "name",
+              "type": "ordinal",
+              "axis": null,
+              "sort": null
+            },
+            "y": {
+              "field": "cardinality",
+              "type": "quantitative",
+              "axis": {
+                "grid": false
+              },
+              "title": "Intersection Size"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "width": 258,
+          "height": 96,
+          "data": {
+            "name": "sets"
+          },
+          "layer": [
+            {
+              "mark": {
+                "type": "bar",
+                "tooltip": true
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "middle",
+                "dx": -2
+              },
+              "encoding": {
+                "text": {
+                  "field": "cardinality",
+                  "type": "quantitative"
+                }
+              }
+            }
+          ],
+          "encoding": {
+            "y": {
+              "field": "name",
+              "type": "ordinal",
+              "axis": null,
+              "sort": null
+            },
+            "x": {
+              "field": "cardinality",
+              "type": "quantitative",
+              "title": "Set Size",
+              "sort": "descending",
+              "axis": {
+                "grid": false
+              }
+            }
+          }
+        },
+        {
+          "data": {
+            "name": "sets"
+          },
+          "width": 103.2,
+          "height": 96,
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "middle",
+            "fontSize": 16
+          },
+          "encoding": {
+            "y": {
+              "field": "name",
+              "type": "ordinal",
+              "axis": null,
+              "sort": null
+            },
+            "text": {
+              "field": "name",
+              "type": "ordinal"
+            }
+          }
+        },
+        {
+          "width": 602,
+          "height": 96,
+          "data": {
+            "name": "combinations"
+          },
+          "transform": [
+            {
+              "flatten": [
+                "sets"
+              ],
+              "as": [
+                "has_set"
+              ]
+            },
+            {
+              "flatten": [
+                "nsets"
+              ],
+              "as": [
+                "has_not_set"
+              ]
+            },
+            {
+              "calculate": "datum.has_set+datum.has_not_set",
+              "as": "set"
+            }
+          ],
+          "layer": [
+            {
+              "mark": {
+                "type": "circle",
+                "size": 113.50233909251226,
+                "tooltip": true
+              },
+              "encoding": {
+                "color": {
+                  "field": "partOf",
+                  "type": "nominal",
+                  "legend": null,
+                  "scale": {
+                    "range": [
+                      "rgb(211, 211, 211)",
+                      "rgb(76, 120, 168)"
+                    ]
+                  }
+                },
+                "y": {
+                  "field": "set",
+                  "type": "ordinal",
+                  "axis": null,
+                  "sort": null,
+                  "scale": {
+                    "domain": [
+                      "1v1",
+                      "2v2",
+                      "3v3",
+                      "4v4"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "mark": "rule",
+              "transform": [
+                {
+                  "filter": {
+                    "field": "partOf",
+                    "equal": 1
+                  }
+                },
+                {
+                  "calculate": "datum.sets[datum.sets.length -1]",
+                  "as": "set_end"
+                }
+              ],
+              "encoding": {
+                "y": {
+                  "field": "sets[0]",
+                  "type": "ordinal",
+                  "axis": null,
+                  "sort": null
+                },
+                "y2": {
+                  "field": "set_end"
+                }
+              }
+            }
+          ],
+          "encoding": {
+            "x": {
+              "field": "name",
+              "type": "ordinal",
+              "axis": null,
+              "sort": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "padding": 20,
+    "background": "#ffffff",
+    "concat": {
+      "spacing": 0
+    },
+    "view": {
+      "stroke": null
+    },
+    "bar": {
+      "fill": "rgb(76, 120, 168)"
+    },
+    "circle": {
+      "opacity": 1
+    },
+    "rule": {
+      "stroke": "rgb(76, 120, 168)",
+      "strokeWidth": 3
+    },
+    "axis": {
+      "labelColor": "rgb(0, 0, 0)",
+      "labelFontSize": 10,
+      "titleColor": "rgb(0, 0, 0)",
+      "titleFontSize": 16
+    },
+    "title": {
+      "color": "rgb(0, 0, 0)"
+    },
+    "text": {
+      "fill": "rgb(0, 0, 0)",
+      "fontSize": 10
+    }
+  }
+}

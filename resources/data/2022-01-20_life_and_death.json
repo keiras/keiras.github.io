@@ -1,0 +1,602 @@
+[
+ {
+   "dateString": "2021-11-03",
+   "birth": 4199,
+   "dead": 508,
+   "death_re": 176,
+   "death_sum": 684,
+   "diff": 3515
+ },
+ {
+   "dateString": "2021-11-04",
+   "birth": 4969,
+   "dead": 670,
+   "death_re": 246,
+   "death_sum": 916,
+   "diff": 4053
+ },
+ {
+   "dateString": "2021-11-05",
+   "birth": 5037,
+   "dead": 763,
+   "death_re": 316,
+   "death_sum": 1079,
+   "diff": 3958
+ },
+ {
+   "dateString": "2021-11-06",
+   "birth": 5536,
+   "dead": 961,
+   "death_re": 407,
+   "death_sum": 1368,
+   "diff": 4168
+ },
+ {
+   "dateString": "2021-11-07",
+   "birth": 5647,
+   "dead": 1162,
+   "death_re": 506,
+   "death_sum": 1668,
+   "diff": 3979
+ },
+ {
+   "dateString": "2021-11-08",
+   "birth": 4366,
+   "dead": 978,
+   "death_re": 383,
+   "death_sum": 1361,
+   "diff": 3005
+ },
+ {
+   "dateString": "2021-11-09",
+   "birth": 4084,
+   "dead": 1058,
+   "death_re": 476,
+   "death_sum": 1534,
+   "diff": 2550
+ },
+ {
+   "dateString": "2021-11-10",
+   "birth": 3674,
+   "dead": 1114,
+   "death_re": 457,
+   "death_sum": 1571,
+   "diff": 2103
+ },
+ {
+   "dateString": "2021-11-11",
+   "birth": 4308,
+   "dead": 1340,
+   "death_re": 525,
+   "death_sum": 1865,
+   "diff": 2443
+ },
+ {
+   "dateString": "2021-11-12",
+   "birth": 4274,
+   "dead": 1342,
+   "death_re": 624,
+   "death_sum": 1966,
+   "diff": 2308
+ },
+ {
+   "dateString": "2021-11-13",
+   "birth": 4413,
+   "dead": 1431,
+   "death_re": 706,
+   "death_sum": 2137,
+   "diff": 2276
+ },
+ {
+   "dateString": "2021-11-14",
+   "birth": 4707,
+   "dead": 1781,
+   "death_re": 870,
+   "death_sum": 2651,
+   "diff": 2056
+ },
+ {
+   "dateString": "2021-11-15",
+   "birth": 3278,
+   "dead": 1358,
+   "death_re": 643,
+   "death_sum": 2001,
+   "diff": 1277
+ },
+ {
+   "dateString": "2021-11-16",
+   "birth": 3166,
+   "dead": 1350,
+   "death_re": 609,
+   "death_sum": 1959,
+   "diff": 1207
+ },
+ {
+   "dateString": "2021-11-17",
+   "birth": 3197,
+   "dead": 1341,
+   "death_re": 634,
+   "death_sum": 1975,
+   "diff": 1222
+ },
+ {
+   "dateString": "2021-11-18",
+   "birth": 3007,
+   "dead": 1290,
+   "death_re": 649,
+   "death_sum": 1939,
+   "diff": 1068
+ },
+ {
+   "dateString": "2021-11-19",
+   "birth": 3058,
+   "dead": 1393,
+   "death_re": 638,
+   "death_sum": 2031,
+   "diff": 1027
+ },
+ {
+   "dateString": "2021-11-20",
+   "birth": 3383,
+   "dead": 1550,
+   "death_re": 809,
+   "death_sum": 2359,
+   "diff": 1024
+ },
+ {
+   "dateString": "2021-11-21",
+   "birth": 3516,
+   "dead": 1772,
+   "death_re": 825,
+   "death_sum": 2597,
+   "diff": 919
+ },
+ {
+   "dateString": "2021-11-22",
+   "birth": 2771,
+   "dead": 1228,
+   "death_re": 567,
+   "death_sum": 1795,
+   "diff": 976
+ },
+ {
+   "dateString": "2021-11-23",
+   "birth": 2670,
+   "dead": 1213,
+   "death_re": 566,
+   "death_sum": 1779,
+   "diff": 891
+ },
+ {
+   "dateString": "2021-11-24",
+   "birth": 2357,
+   "dead": 1358,
+   "death_re": 638,
+   "death_sum": 1996,
+   "diff": 361
+ },
+ {
+   "dateString": "2021-11-25",
+   "birth": 2272,
+   "dead": 1282,
+   "death_re": 587,
+   "death_sum": 1869,
+   "diff": 403
+ },
+ {
+   "dateString": "2021-11-26",
+   "birth": 2671,
+   "dead": 1487,
+   "death_re": 712,
+   "death_sum": 2199,
+   "diff": 472
+ },
+ {
+   "dateString": "2021-11-27",
+   "birth": 3001,
+   "dead": 1713,
+   "death_re": 741,
+   "death_sum": 2454,
+   "diff": 547
+ },
+ {
+   "dateString": "2021-11-28",
+   "birth": 3042,
+   "dead": 1845,
+   "death_re": 868,
+   "death_sum": 2713,
+   "diff": 329
+ },
+ {
+   "dateString": "2021-11-29",
+   "birth": 2126,
+   "dead": 1385,
+   "death_re": 582,
+   "death_sum": 1967,
+   "diff": 159
+ },
+ {
+   "dateString": "2021-11-30",
+   "birth": 2044,
+   "dead": 1363,
+   "death_re": 614,
+   "death_sum": 1977,
+   "diff": 67
+ },
+ {
+   "dateString": "2021-12-01",
+   "birth": 2011,
+   "dead": 1324,
+   "death_re": 606,
+   "death_sum": 1930,
+   "diff": 81
+ },
+ {
+   "dateString": "2021-12-02",
+   "birth": 2163,
+   "dead": 1390,
+   "death_re": 656,
+   "death_sum": 2046,
+   "diff": 117
+ },
+ {
+   "dateString": "2021-12-03",
+   "birth": 2067,
+   "dead": 1426,
+   "death_re": 665,
+   "death_sum": 2091,
+   "diff": -24
+ },
+ {
+   "dateString": "2021-12-04",
+   "birth": 2533,
+   "dead": 1687,
+   "death_re": 855,
+   "death_sum": 2542,
+   "diff": -9
+ },
+ {
+   "dateString": "2021-12-05",
+   "birth": 2576,
+   "dead": 1825,
+   "death_re": 893,
+   "death_sum": 2718,
+   "diff": -142
+ },
+ {
+   "dateString": "2021-12-06",
+   "birth": 1580,
+   "dead": 1166,
+   "death_re": 631,
+   "death_sum": 1797,
+   "diff": -217
+ },
+ {
+   "dateString": "2021-12-07",
+   "birth": 1813,
+   "dead": 1441,
+   "death_re": 656,
+   "death_sum": 2097,
+   "diff": -284
+ },
+ {
+   "dateString": "2021-12-08",
+   "birth": 1682,
+   "dead": 1309,
+   "death_re": 725,
+   "death_sum": 2034,
+   "diff": -352
+ },
+ {
+   "dateString": "2021-12-09",
+   "birth": 1509,
+   "dead": 1238,
+   "death_re": 684,
+   "death_sum": 1922,
+   "diff": -413
+ },
+ {
+   "dateString": "2021-12-10",
+   "birth": 1455,
+   "dead": 1278,
+   "death_re": 635,
+   "death_sum": 1913,
+   "diff": -458
+ },
+ {
+   "dateString": "2021-12-11",
+   "birth": 2043,
+   "dead": 1813,
+   "death_re": 951,
+   "death_sum": 2764,
+   "diff": -721
+ },
+ {
+   "dateString": "2021-12-12",
+   "birth": 1944,
+   "dead": 1750,
+   "death_re": 1066,
+   "death_sum": 2816,
+   "diff": -872
+ },
+ {
+   "dateString": "2021-12-13",
+   "birth": 1461,
+   "dead": 1268,
+   "death_re": 718,
+   "death_sum": 1986,
+   "diff": -525
+ },
+ {
+   "dateString": "2021-12-14",
+   "birth": 1376,
+   "dead": 1201,
+   "death_re": 748,
+   "death_sum": 1949,
+   "diff": -573
+ },
+ {
+   "dateString": "2021-12-15",
+   "birth": 1227,
+   "dead": 1130,
+   "death_re": 745,
+   "death_sum": 1875,
+   "diff": -648
+ },
+ {
+   "dateString": "2021-12-16",
+   "birth": 1166,
+   "dead": 1130,
+   "death_re": 799,
+   "death_sum": 1929,
+   "diff": -763
+ },
+ {
+   "dateString": "2021-12-17",
+   "birth": 1227,
+   "dead": 1195,
+   "death_re": 767,
+   "death_sum": 1962,
+   "diff": -735
+ },
+ {
+   "dateString": "2021-12-18",
+   "birth": 1377,
+   "dead": 1332,
+   "death_re": 864,
+   "death_sum": 2196,
+   "diff": -819
+ },
+ {
+   "dateString": "2021-12-19",
+   "birth": 1381,
+   "dead": 1437,
+   "death_re": 842,
+   "death_sum": 2279,
+   "diff": -898
+ },
+ {
+   "dateString": "2021-12-20",
+   "birth": 1083,
+   "dead": 1084,
+   "death_re": 694,
+   "death_sum": 1778,
+   "diff": -695
+ },
+ {
+   "dateString": "2021-12-21",
+   "birth": 1090,
+   "dead": 1151,
+   "death_re": 723,
+   "death_sum": 1874,
+   "diff": -784
+ },
+ {
+   "dateString": "2021-12-22",
+   "birth": 985,
+   "dead": 1217,
+   "death_re": 693,
+   "death_sum": 1910,
+   "diff": -925
+ },
+ {
+   "dateString": "2021-12-23",
+   "birth": 1068,
+   "dead": 1211,
+   "death_re": 618,
+   "death_sum": 1829,
+   "diff": -761
+ },
+ {
+   "dateString": "2021-12-24",
+   "birth": 858,
+   "dead": 819,
+   "death_re": 433,
+   "death_sum": 1252,
+   "diff": -394
+ },
+ {
+   "dateString": "2021-12-25",
+   "birth": 981,
+   "dead": 922,
+   "death_re": 448,
+   "death_sum": 1370,
+   "diff": -389
+ },
+ {
+   "dateString": "2021-12-26",
+   "birth": 1192,
+   "dead": 1098,
+   "death_re": 463,
+   "death_sum": 1561,
+   "diff": -369
+ },
+ {
+   "dateString": "2021-12-27",
+   "birth": 1167,
+   "dead": 1048,
+   "death_re": 444,
+   "death_sum": 1492,
+   "diff": -325
+ },
+ {
+   "dateString": "2021-12-28",
+   "birth": 1156,
+   "dead": 1059,
+   "death_re": 466,
+   "death_sum": 1525,
+   "diff": -369
+ },
+ {
+   "dateString": "2021-12-29",
+   "birth": 1197,
+   "dead": 1120,
+   "death_re": 462,
+   "death_sum": 1582,
+   "diff": -385
+ },
+ {
+   "dateString": "2021-12-30",
+   "birth": 1228,
+   "dead": 1186,
+   "death_re": 461,
+   "death_sum": 1647,
+   "diff": -419
+ },
+ {
+   "dateString": "2021-12-31",
+   "birth": 845,
+   "dead": 925,
+   "death_re": 297,
+   "death_sum": 1222,
+   "diff": -377
+ },
+ {
+   "dateString": "2022-01-01",
+   "birth": 1193,
+   "dead": 1218,
+   "death_re": 480,
+   "death_sum": 1698,
+   "diff": -505
+ },
+ {
+   "dateString": "2022-01-02",
+   "birth": 1408,
+   "dead": 1319,
+   "death_re": 451,
+   "death_sum": 1770,
+   "diff": -362
+ },
+ {
+   "dateString": "2022-01-03",
+   "birth": 1204,
+   "dead": 1163,
+   "death_re": 356,
+   "death_sum": 1519,
+   "diff": -315
+ },
+ {
+   "dateString": "2022-01-04",
+   "birth": 1005,
+   "dead": 1102,
+   "death_re": 328,
+   "death_sum": 1430,
+   "diff": -425
+ },
+ {
+   "dateString": "2022-01-05",
+   "birth": 1062,
+   "dead": 996,
+   "death_re": 328,
+   "death_sum": 1324,
+   "diff": -262
+ },
+ {
+   "dateString": "2022-01-06",
+   "birth": 1041,
+   "dead": 1040,
+   "death_re": 365,
+   "death_sum": 1405,
+   "diff": -364
+ },
+ {
+   "dateString": "2022-01-07",
+   "birth": 1054,
+   "dead": 1123,
+   "death_re": 332,
+   "death_sum": 1455,
+   "diff": -401
+ },
+ {
+   "dateString": "2022-01-08",
+   "birth": 1174,
+   "dead": 1356,
+   "death_re": 361,
+   "death_sum": 1717,
+   "diff": -543
+ },
+ {
+   "dateString": "2022-01-09",
+   "birth": 1149,
+   "dead": 1432,
+   "death_re": 346,
+   "death_sum": 1778,
+   "diff": -629
+ },
+ {
+   "dateString": "2022-01-10",
+   "birth": 775,
+   "dead": 976,
+   "death_re": 199,
+   "death_sum": 1175,
+   "diff": -400
+ },
+ {
+   "dateString": "2022-01-11",
+   "birth": 794,
+   "dead": 915,
+   "death_re": 190,
+   "death_sum": 1105,
+   "diff": -311
+ },
+ {
+   "dateString": "2022-01-12",
+   "birth": 818,
+   "dead": 935,
+   "death_re": 165,
+   "death_sum": 1100,
+   "diff": -282
+ },
+ {
+   "dateString": "2022-01-13",
+   "birth": 784,
+   "dead": 1002,
+   "death_re": 126,
+   "death_sum": 1128,
+   "diff": -344
+ },
+ {
+   "dateString": "2022-01-14",
+   "birth": 761,
+   "dead": 1060,
+   "death_re": 105,
+   "death_sum": 1165,
+   "diff": -404
+ },
+ {
+   "dateString": "2022-01-15",
+   "birth": 953,
+   "dead": 1266,
+   "death_re": 73,
+   "death_sum": 1339,
+   "diff": -386
+ },
+ {
+   "dateString": "2022-01-16",
+   "birth": 992,
+   "dead": 1034,
+   "death_re": 12,
+   "death_sum": 1046,
+   "diff": -54
+ }
+]

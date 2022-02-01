@@ -1,0 +1,377 @@
+[
+ {
+   "dateString": "2021-11-03",
+   "steam": 12398,
+   "xbox": 5863
+ },
+ {
+   "dateString": "2021-11-04",
+   "steam": 14805,
+   "xbox": 7188
+ },
+ {
+   "dateString": "2021-11-05",
+   "steam": 16062,
+   "xbox": 7886
+ },
+ {
+   "dateString": "2021-11-06",
+   "steam": 17533,
+   "xbox": 8615
+ },
+ {
+   "dateString": "2021-11-07",
+   "steam": 20150,
+   "xbox": 9991
+ },
+ {
+   "dateString": "2021-11-08",
+   "steam": 19244,
+   "xbox": 9878
+ },
+ {
+   "dateString": "2021-11-09",
+   "steam": 20141,
+   "xbox": 10069
+ },
+ {
+   "dateString": "2021-11-10",
+   "steam": 20022,
+   "xbox": 9926
+ },
+ {
+   "dateString": "2021-11-11",
+   "steam": 21961,
+   "xbox": 11039
+ },
+ {
+   "dateString": "2021-11-12",
+   "steam": 22204,
+   "xbox": 10997
+ },
+ {
+   "dateString": "2021-11-13",
+   "steam": 22819,
+   "xbox": 11148
+ },
+ {
+   "dateString": "2021-11-14",
+   "steam": 25638,
+   "xbox": 12552
+ },
+ {
+   "dateString": "2021-11-15",
+   "steam": 23524,
+   "xbox": 11261
+ },
+ {
+   "dateString": "2021-11-16",
+   "steam": 23654,
+   "xbox": 11071
+ },
+ {
+   "dateString": "2021-11-17",
+   "steam": 24326,
+   "xbox": 11645
+ },
+ {
+   "dateString": "2021-11-18",
+   "steam": 23933,
+   "xbox": 11771
+ },
+ {
+   "dateString": "2021-11-19",
+   "steam": 24288,
+   "xbox": 11656
+ },
+ {
+   "dateString": "2021-11-20",
+   "steam": 25556,
+   "xbox": 12043
+ },
+ {
+   "dateString": "2021-11-21",
+   "steam": 27390,
+   "xbox": 13262
+ },
+ {
+   "dateString": "2021-11-22",
+   "steam": 24854,
+   "xbox": 12363
+ },
+ {
+   "dateString": "2021-11-23",
+   "steam": 25051,
+   "xbox": 12413
+ },
+ {
+   "dateString": "2021-11-24",
+   "steam": 25039,
+   "xbox": 12222
+ },
+ {
+   "dateString": "2021-11-25",
+   "steam": 24422,
+   "xbox": 11923
+ },
+ {
+   "dateString": "2021-11-26",
+   "steam": 25993,
+   "xbox": 12604
+ },
+ {
+   "dateString": "2021-11-27",
+   "steam": 27665,
+   "xbox": 12907
+ },
+ {
+   "dateString": "2021-11-28",
+   "steam": 29688,
+   "xbox": 14136
+ },
+ {
+   "dateString": "2021-11-29",
+   "steam": 26524,
+   "xbox": 12662
+ },
+ {
+   "dateString": "2021-11-30",
+   "steam": 27091,
+   "xbox": 12413
+ },
+ {
+   "dateString": "2021-12-01",
+   "steam": 26198,
+   "xbox": 12510
+ },
+ {
+   "dateString": "2021-12-02",
+   "steam": 26638,
+   "xbox": 12621
+ },
+ {
+   "dateString": "2021-12-03",
+   "steam": 26752,
+   "xbox": 12316
+ },
+ {
+   "dateString": "2021-12-04",
+   "steam": 28377,
+   "xbox": 13088
+ },
+ {
+   "dateString": "2021-12-05",
+   "steam": 30119,
+   "xbox": 13863
+ },
+ {
+   "dateString": "2021-12-06",
+   "steam": 25567,
+   "xbox": 12039
+ },
+ {
+   "dateString": "2021-12-07",
+   "steam": 26750,
+   "xbox": 12666
+ },
+ {
+   "dateString": "2021-12-08",
+   "steam": 26422,
+   "xbox": 12464
+ },
+ {
+   "dateString": "2021-12-09",
+   "steam": 25865,
+   "xbox": 11600
+ },
+ {
+   "dateString": "2021-12-10",
+   "steam": 24836,
+   "xbox": 10916
+ },
+ {
+   "dateString": "2021-12-11",
+   "steam": 27963,
+   "xbox": 12657
+ },
+ {
+   "dateString": "2021-12-12",
+   "steam": 28978,
+   "xbox": 13214
+ },
+ {
+   "dateString": "2021-12-13",
+   "steam": 25726,
+   "xbox": 11874
+ },
+ {
+   "dateString": "2021-12-14",
+   "steam": 25411,
+   "xbox": 11933
+ },
+ {
+   "dateString": "2021-12-15",
+   "steam": 24441,
+   "xbox": 11416
+ },
+ {
+   "dateString": "2021-12-16",
+   "steam": 24448,
+   "xbox": 11413
+ },
+ {
+   "dateString": "2021-12-17",
+   "steam": 24381,
+   "xbox": 11094
+ },
+ {
+   "dateString": "2021-12-18",
+   "steam": 25525,
+   "xbox": 11591
+ },
+ {
+   "dateString": "2021-12-19",
+   "steam": 26610,
+   "xbox": 12158
+ },
+ {
+   "dateString": "2021-12-20",
+   "steam": 23977,
+   "xbox": 11073
+ },
+ {
+   "dateString": "2021-12-21",
+   "steam": 23849,
+   "xbox": 11156
+ },
+ {
+   "dateString": "2021-12-22",
+   "steam": 23725,
+   "xbox": 10908
+ },
+ {
+   "dateString": "2021-12-23",
+   "steam": 23086,
+   "xbox": 10740
+ },
+ {
+   "dateString": "2021-12-24",
+   "steam": 19880,
+   "xbox": 8944
+ },
+ {
+   "dateString": "2021-12-25",
+   "steam": 20490,
+   "xbox": 9016
+ },
+ {
+   "dateString": "2021-12-26",
+   "steam": 23275,
+   "xbox": 10405
+ },
+ {
+   "dateString": "2021-12-27",
+   "steam": 23661,
+   "xbox": 10683
+ },
+ {
+   "dateString": "2021-12-28",
+   "steam": 23702,
+   "xbox": 11120
+ },
+ {
+   "dateString": "2021-12-29",
+   "steam": 23846,
+   "xbox": 11180
+ },
+ {
+   "dateString": "2021-12-30",
+   "steam": 24190,
+   "xbox": 11248
+ },
+ {
+   "dateString": "2021-12-31",
+   "steam": 19642,
+   "xbox": 8858
+ },
+ {
+   "dateString": "2022-01-01",
+   "steam": 23552,
+   "xbox": 10473
+ },
+ {
+   "dateString": "2022-01-02",
+   "steam": 25739,
+   "xbox": 11652
+ },
+ {
+   "dateString": "2022-01-03",
+   "steam": 24378,
+   "xbox": 11059
+ },
+ {
+   "dateString": "2022-01-04",
+   "steam": 22784,
+   "xbox": 10692
+ },
+ {
+   "dateString": "2022-01-05",
+   "steam": 23056,
+   "xbox": 10760
+ },
+ {
+   "dateString": "2022-01-06",
+   "steam": 23659,
+   "xbox": 10838
+ },
+ {
+   "dateString": "2022-01-07",
+   "steam": 23454,
+   "xbox": 10485
+ },
+ {
+   "dateString": "2022-01-08",
+   "steam": 25013,
+   "xbox": 11209
+ },
+ {
+   "dateString": "2022-01-09",
+   "steam": 25554,
+   "xbox": 11523
+ },
+ {
+   "dateString": "2022-01-10",
+   "steam": 21130,
+   "xbox": 9684
+ },
+ {
+   "dateString": "2022-01-11",
+   "steam": 21178,
+   "xbox": 9921
+ },
+ {
+   "dateString": "2022-01-12",
+   "steam": 21041,
+   "xbox": 9649
+ },
+ {
+   "dateString": "2022-01-13",
+   "steam": 21042,
+   "xbox": 9686
+ },
+ {
+   "dateString": "2022-01-14",
+   "steam": 21485,
+   "xbox": 9569
+ },
+ {
+   "dateString": "2022-01-15",
+   "steam": 22524,
+   "xbox": 9981
+ },
+ {
+   "dateString": "2022-01-16",
+   "steam": 23538,
+   "xbox": 10478
+ }
+]
