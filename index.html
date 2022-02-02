@@ -10,11 +10,17 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"> </script>
 
         <script src="resources/js/bootstrap-5-hacked.bundle.min.js"></script>
-        <link href="resources/css/bootstrap-5-hacked.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap-5-hacked.min.css}"/>
+        <link href="resources/css/bootstrap-5-hacked.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap-5-hacked.min.css}"></script>
         
+        <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
+        <script src="resources/js/metricsgraphics-3.0.a3.js"></script>
+        <link href="resources/css/metricsgraphics-3.0.a3.css" rel="stylesheet" media="screen"></link>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css"></link>
+        <script src="https://unpkg.com/@upsetjs/bundle" crossorigin="anonymous"></script>
+
         
         <!-- https://github.com/aaaakshat/cm-web-fonts -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css" ></link>
         <style>
         body {
             font-family: "Computer Modern Concrete", serif;
@@ -97,11 +103,6 @@
         };
         </script>
         
-        <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
-        <script src="resources/js/metricsgraphics-3.0.a3.js" th:src="@{/resources/js/metricsgraphics-3.0.a3.js}"/>
-        <link href="resources/css/metricsgraphics-3.0.a3.css" rel="stylesheet" media="screen" th:href="@{/resources/css/metricsgraphics-3.0.a3.css}"/>
-        <link href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' rel='stylesheet' type='text/css' />
-        <script src="https://unpkg.com/@upsetjs/bundle" crossorigin="anonymous"></script>
 
     </head>
     <body>
@@ -114,7 +115,7 @@
             </div>
             <div class="hr-sect">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="checkboxTN" onclick="toggleTN(this)" checked="true" />
+                    <input class="form-check-input" type="checkbox" id="checkboxTN" onclick="toggleTN(this)" checked="true"></input>
                     <label class="form-check-label" for="checkboxTN">show Technical Notes</label>
                 </div>
             </div>
@@ -148,8 +149,8 @@
         <hr />
 
         <div class="col-12" style="position:relative">
-            <div id="chartActivityService_key" style="position:absolute; top:5px; right:20px; font-size: 14px;" />
-            <div id="chartActivityService" style="min-height:180px;" />
+            <div id="chartActivityService_key" style="position:absolute; top:5px; right:20px; font-size: 14px;"></div>
+            <div id="chartActivityService" style="min-height:180px;"></div>
         </div>
             
         <div class="row">
@@ -170,8 +171,8 @@
 
         
         <div class="col-12" style="position:relative">
-            <div id="chartActivityMode_key" style="position:absolute; top:5px; right:20px; font-size: 14px;" />
-            <div id="chartActivityMode" style="min-height:180px;" />
+            <div id="chartActivityMode_key" style="position:absolute; top:5px; right:20px; font-size: 14px;"></div>
+            <div id="chartActivityMode" style="min-height:180px;"></div>
         </div>
 
 
@@ -181,8 +182,8 @@
         </div>
         
         <div class="col-12" style="position:relative">
-            <div id="chartLifeDeath_key" style="position:absolute; top:5px; right:20px; font-size: 14px;" />
-            <div id="chartLifeDeath" style="min-height:180px;" />
+            <div id="chartLifeDeath_key" style="position:absolute; top:5px; right:20px; font-size: 14px;"></div>
+            <div id="chartLifeDeath" style="min-height:180px;"></div>
         </div>
 
         <div class="col-12">
@@ -245,7 +246,7 @@
         
 
         <div class="col-12">
-            <div id="fig-sets" />
+            <div id="fig-sets"></div>
         </div>
         
         
@@ -268,7 +269,7 @@
         </div>
         
         <div class="col-12">
-            <div id="chartRegionModes" />
+            <div id="chartRegionModes"></div>
         </div>
         
         <div class="col-12">
@@ -281,10 +282,10 @@
         
         <div class="row">
             <div class="col-6">
-                <div id="chartSurvival1" />
+                <div id="chartSurvival1"></div>
             </div>
             <div class="col-6">
-                <div id="chartSurvival2" />
+                <div id="chartSurvival2"></div>
             </div>
         </div>
         
