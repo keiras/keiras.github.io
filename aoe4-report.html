@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+
+    <head>
+        <title>AoE4 multiplayer quickmatch activity</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Martin Kryl" />
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"> </script>
+
+        <script src="resources/js/bootstrap-5-hacked.bundle.min.js"></script>
+        <link href="resources/css/bootstrap-5-hacked.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap-5-hacked.min.css}"></script>
+        
+        <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
+        <script src="resources/js/metricsgraphics-3.0.a3.js"></script>
+        <link href="resources/css/metricsgraphics-3.0.a3.css" rel="stylesheet" media="screen"></link>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css"></link>
+        <script src="https://unpkg.com/@upsetjs/bundle" crossorigin="anonymous"></script>
+
+        
+        <!-- https://github.com/aaaakshat/cm-web-fonts -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css" ></link>
+        <style>
+        body {
+            font-family: "Computer Modern Concrete", serif;
+        }
+        p {
+            font-family: "Computer Modern Concrete", serif;
+        }
+        </style>
+
+
+        <style>
+        .text-justified { text-align: justify; text-justify: inter-word; }
+        
+        tr td{
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        table td:first-child,
+        table th:first-child{
+            border-right: 1px solid #000;
+        }
+
+        
+        /* Horizontal line styling with text in the center */
+        .hr-sect {
+            display: flex;
+            flex-basis: 100%;
+            align-items: center;
+            color: rgba(0, 0, 0, 0.99);
+            margin: 8px 0px;
+        }
+        .hr-sect::before,
+        .hr-sect::after {
+            content: "";
+            flex-grow: 1;
+            background: rgba(0, 0, 0, 0.35);
+            height: 2px;
+            font-size: 0px;
+            line-height: 0px;
+            margin: 0px 8px;
+        }
+
+
+        .blue-hl{
+            text-decoration: underline;
+            text-decoration-color: blue;
+        }
+        .black-hl{
+            text-decoration: underline;
+            text-decoration-color: black;
+        }
+        .red-hl{
+            text-decoration: underline;
+            text-decoration-color: red;
+        }
+        .grey-hl{
+            text-decoration: underline;
+            text-decoration-color: grey;
+        }
+        
+        a{
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        </style>
+        
+        <script>
+        function toggleTN(ch) {
+            var divs = document.getElementsByClassName('technote');
+            for(var i = 0; divs[i]; i++){
+                if (! ch.checked) {
+                    divs[i].style.display = 'none';
+                }
+                else {
+                    divs[i].style.display = '';
+                }
+            }
+        };
+        </script>
+        
+
+    </head>
+    <body>
+   
+    <div class="container" style="width:960px; background-color:#f8f8f8;">
+        <div class="row">
+            <div class="col-12" style="padding-top:10px">
+                <h3 class="text-center">AoE4 multiplayer quickmatch activity report</h3>
+                <h6 class="text-center">by Martin Kryl (Keiras#8910 at Discord) </h6>
+            </div>
+            <div class="hr-sect">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="checkboxTN" onclick="toggleTN(this)" checked="true"></input>
+                    <label class="form-check-label" for="checkboxTN">show Technical Notes</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <div class="h4 text-center">Total player accounts</div>
+                <div class="h3 text-center">186 321</div>
+                <div class="h6 text-center">of that 119 431 on Steam</div>
+            </div>
+            <div class="col">
+                <div class="h4 text-center">Games played so far</div>
+                <div class="h2 text-center">3 977 906</div>
+            </div>
+            <div class="col">
+                <div class="h4 text-center">Tracked interval</div>
+                <div class="h3 text-center">76 days</div>
+                <div class="h6 text-center">2021-11-03 – 2022-01-17</div>
+            </div>
+        </div>
+            
+        <div class="col-12">
+            <p class="technote text-justified">All the presented findings are based on data available at <a href="https://www.ageofempires.com/stats/ageiv">ageofempires.com/stats/ageiv <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="10" height="10" viewBox="0 0 24 24"><path d="M 3 3 L 3 21 L 21 21 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 3 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"></path></svg></a>. Data have been regularly collected. Only accounts that have played more than 10 games in some of the quickmatch modes (1v1, 2v2, 3v3, 4v4) before or during the tracked interval are considered. Due to this API limitation, reference dates of new players appearing may be shifted and the activity numbers may be slightly undervalued.</p>
+            
+            <p class="technote text-justified">Multiple accounts of the same player or shared accounts among multiple players are not discerned in the analysis.</p>
+            
+            <p class="text-justified">There have been 119 k Steam accounts identified to take part in quickmatch multiplayer. Since there are no official numbers on copies sold, it is hard to estimate the proportion of game owners that are interested in multiplayer. Rough estimate of Steam owners provided by <a href="https://steamdb.info/app/1466860/graphs/">SteamDB <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="10" height="10" viewBox="0 0 24 24"><path d="M 3 3 L 3 21 L 21 21 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 3 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"></path></svg></a> based on review numbers is in 576 k – 1.58 M range, which would mean apx. 1 in 9 players participate in multiplayer. </p>
+        </div>
+        
+        <hr />
+
+        <div class="col-12" style="position:relative">
+            <div id="chartActivityService_key" style="position:absolute; top:5px; right:20px; font-size: 14px;"></div>
+            <div id="chartActivityService" style="min-height:180px;"></div>
+        </div>
+            
+        <div class="row">
+            <div class="col-9">
+                <p class="technote text-justified">The following figures use active players metric, which indicates how many accounts played at least a single match in a particular day. Due to global reach of the game and lack of more precise means, 08:00 GMT has been chosen as an end of a day in all cases.</p>
+                
+                <p class="text-justified">The first chart summarizes the activity by service used – <span class="black-hl">Steam</span> or <span class="blue-hl">Microsoft platform</span> (referred to as xbox). Any account is tied to a single service and thus total number of players is a sum of both lines.</p>
+                
+                <p class="text-justified">The activity peaked in the first half of December 2021. A simple weekly seasonality can be observed, as there is about +15% spike on Sundays compared to the rest of the week. Christmas and New Year's celebration led to -20% decrease in activity. There seems to be no difference in trends of the services. Steam maintained the ratio of about 2 in 3 accounts throughout the period.</p>
+            </div>
+
+            <div class="col-3 align-self-center">
+                <div class="h4 text-center">Peak players active in quickmatch</div>
+                <div class="h3 text-center">43 982</div>
+                <div class="h6 text-center">daily total<br /> on 2021-12-05 (Sun)</div>
+            </div>
+        </div>
+
+        
+        <div class="col-12" style="position:relative">
+            <div id="chartActivityMode_key" style="position:absolute; top:5px; right:20px; font-size: 14px;"></div>
+            <div id="chartActivityMode" style="min-height:180px;"></div>
+        </div>
+
+
+        <div class="col-12">
+            <p class="text-justified">Daily activity structured by game modes paints an interesting picture. Initially, <span class="black-hl">1v1s</span> and <span class="blue-hl">2v2s</span> were significantly more popular than the other two modes. However, as the time progressed the gap between the least and the most popular game mode shrunk – ratio of population in the least favourite mode compared to the most favourite changed from ∼40% to ∼85%.</p>
+            <p class="text-justified">It should be noted, that an account can be active in multiple modes on a given day, thus the sum of lines is larger than number of accounts active on the day (e.g. on Jan 16, the sum would be 46 211, but there were only 34 016 unique active accounts) </p>
+        </div>
+        
+        <div class="col-12" style="position:relative">
+            <div id="chartLifeDeath_key" style="position:absolute; top:5px; right:20px; font-size: 14px;"></div>
+            <div id="chartLifeDeath" style="min-height:180px;"></div>
+        </div>
+
+        <div class="col-12">
+            <p class="text-justified">The chart above provides a basic glimpse on <span class="blue-hl">influx</span> and <span class="black-hl">outflux</span> of quickmatch players over time.<span class="technote"> New player is an account that has completed 10 games in any of the modes for the first time (the first time it has been seen in one of the leaderboards).</span> Account is considered to be inactive if there has been no game played in any mode in 14 days.<span class="technote"> For the gone inactive line, the dates of the last game is used as a reference point.</span></p>
+            
+            <p class="text-justified">The critical point, in which the outflux overcame influx, was on Dec 3. The number of leaving players seems to have stabilized around 1 300 per day and is not rising. </p>
+            
+            <p class="text-justified technote">Note, that the initial release date influx of players is not shown, as the data API has not been provided until several days after release. Players gone inactive before Nov 2 are also not shown. Only the first instance of appearing and going inactive is shown. However, approx. 30% of the accounts have come back from such inactivity and portion of them went inactive again.  </p>
+        </div>
+        
+        <hr />
+    
+        <div class="row">
+            <div class="col-6">
+                <p class="text-justified">The table shows overall populations of the game modes and number of games played. All accounts having played at least 10 games in a mode are counted in, thus their sum is higher than the total number of accounts. Table also shows how many accounts have the mode as their entry point to the multiplayer experience, i.e. was the first mode to complete 10 games in, and how many accounts have the mode as their favourite by games played.</p>
+                <p class="text-justified">The most popular in terms of the games played is clearly 1v1. However, by the sheer population size, 2v2 is a clear victor and even 3v3 has a broader population than 1v1. It's also worth noting, that 1v1 and 2v2 serve as a popular entry point.</p>
+            </div>
+
+            <div class="col-6 align-self-center">
+                <table class="table table-sm " style="empty-cells: hide;">
+                <thead>
+                    <tr><th class="text-center" width="10%">mode</th>
+                        <th class="text-end" width="20%">games</th>
+                        <th class="text-end" width="22%">pop total</th>
+                        <th class="text-end" width="23%">as entry</th>
+                        <th class="text-end" width="25%">most played</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="text-center">1v1</td>
+                        <td class="text-end"><strong>2 234 957</strong></td>
+                        <td class="text-end">81 774</td>
+                        <td class="text-end"><strong>61 010</strong></td>
+                        <td class="text-end"><strong>60 446</strong></td>
+                    </tr>
+                    <tr><td class="text-center">2v2</td>
+                        <td class="text-end">897 740</td>
+                        <td class="text-end"><strong>100 686</strong></td>
+                        <td class="text-end">58 043</td>
+                        <td class="text-end">56 472</td>
+                        
+                    </tr>
+                    <tr><td class="text-center">3v3</td>
+                        <td class="text-end">473 910</td>
+                        <td class="text-end">87 709</td>
+                        <td class="text-end">36 391</td>
+                        <td class="text-end">34 768</td>
+                    </tr>
+                    <tr><td class="text-center">4v4</td>
+                        <td class="text-end">371 299</td>
+                        <td class="text-end">71 778</td>
+                        <td class="text-end">30 877</td>
+                        <td class="text-end">34 635</td>
+                    </tr>
+                </tbody>
+                </table>
+
+            </div>
+        </div>
+        
+
+        <div class="col-12">
+            <div id="fig-sets"></div>
+        </div>
+        
+        
+        <div class="col-12">
+            <p class="text-justified">The visualization above paints an interesting picture as it categorizes the accounts based on the game modes played. The largest groups are exclusive 1v1 players (39 k) and exclusive 2v2 players (26 k). The population group playing all the team modes is the third largest (20 k). Accounts with all game modes played are in the middle of the pack counting 14 k. </p>
+            <p class="text-justified">It is unclear why 48% of the 1v1 population refuse to participate in the team modes. Some of the speculative reasons might be: 1v1 being the main competitive mode; 1v1 being the mode most commonly seen on streams; different mentality of 1v1 players; tendency to create multiple accounts to practice 1v1s; lack of social features in the game to facilitate teammate discovery; perceived balance issues; ... </p>
+        </div>
+
+        
+        <hr />
+
+        
+        <div class="col-12 text-center">
+            <svg id="map-viz" width="900" height="400"></svg>
+        </div>
+        
+        <div class="col-12">
+            <p class="text-justified">The API provides an information about account's region. There are 7 broad regions and some (∼0.3 %) of the accounts change their region over time. It is assumed, that the region value is based on the location of the server, that the account used in most of its games. In such case, the data would be skewed towards more popular regions because middle ground server would have to be used most of the times for the players in lesser populated regions. </p>
+            <p class="text-justified">There are three big regions - Europe, North America, Asia - which contain 91% of total player population. Since the multiplayer is cross-region and major regions span most of the timezones, it should be possible to find matches throughout the day relatively quickly.</p>
+        </div>
+        
+        <div class="col-12">
+            <div id="chartRegionModes"></div>
+        </div>
+        
+        <div class="col-12">
+            <p class="text-justified technote">The above chart plots four circles for each of the region representing modes 1v1, 2v2, 3v3 and 4v4 from left to right. The size of the circles represents logarithmic population size of the region.</p>
+            <p class="text-justified">In all but one region, 2v2 is the most popular mode with more than half of the region population playing it (54% – 59%) and 4v4 is the least popular (30% – 44%). The odd region in this case is Asia, where 1v1 and 2v2 modes are enjoyed by only 35% and 44% of players respectively. In stark contrast to other regions, 4v4 enjoys 61% population support in Asia.</p>
+        </div>
+
+        
+        <hr />
+        
+        <div class="row">
+            <div class="col-6">
+                <div id="chartSurvival1"></div>
+            </div>
+            <div class="col-6">
+                <div id="chartSurvival2"></div>
+            </div>
+        </div>
+        
+        <div class="col-12">
+            <p class="text-justified technote">Player retention in the Kaplan-Meier charts above uses the same inactivity concept introduced before (not playing any game for more than 14 days). The charts use number of days elapsed between completing 10 games for the first time in any mode and going inactive for the first time. The retention probability axis is an estimate on percentage of relevant population being active for at least the specified number of days.</p>
+            <p class="text-justified">There is a difference between <span class="black-hl">Steam</span> and <span class="blue-hl">Microsoft userbase</span>. Steam accounts tend to be active for longer periods in general – they have 27 active days as median compared to 20 of Microsoft platform users. About 9% of accounts go inactive at the same day they complete the 10 games needed to be placed in the leaderboard. </p>
+            <p class="text-justified">Population of <span class="red-hl">1v1 exclusive</span> accounts have shorter initial activity period than an average account – the median number of days before the first inactivity window is 15. Accounts playing the <span class="blue-hl">team modes exclusively</span> have 20 days median. The population of players playing <span class="black-hl">both solo and team</span> modes seems to be the core in terms of longevity and stability of the game. Half of those account has been active for more than 7 weeks before taking a break from the game. It might be a good idea to foster this segment by not only focusing on balancing 1v1 mode as the primary competitive format, but also considering the issues and unit interactions in team modes.</p>
+        </div>
+        
+        <hr />
+    </div>
+    
+    
+    
+    </body>
+</html>
+
+
+
+
+<script>
+$( document ).ready(function() {
+d3.json('resources/data/2022-01-20_players_modes.json', function(data) {     
+    const sets = UpSetJS.extractSets(data);
+        
+    var x = UpSetJS.render(document.getElementById("fig-sets"), { 
+        sets: sets,
+        width: 900,
+        height: 300,
+        fontFamily: false,
+        fontSizes: {axisTick: "14px", barLabel: "12px", chartLabel: "0px", title:"18px"},
+        exportButtons: false,
+        title: "Player population split by combination of game modes enjoyed.",
+        
+        combinations: {
+            type: 'distinctIntersection',
+            min: 1,
+            limit: 100,
+            order: 'cardinality',
+        },
+        theme: "vega",
+        widthRatios: [0.2, 0.08],
+    });
+    
+    var texts = document.getElementById('fig-sets').getElementsByTagName('text');
+    
+    for (var i=0; texts[i]; i++) {
+        // handle labels having comma as thousands separator
+        var val = texts[i].innerHTML;
+        val = val.split(',').join('')
+        if(!isNaN(val))
+            texts[i].innerHTML  = parseInt(val).toLocaleString('cs-CZ');
+    }
+    
+});
+});
+</script>
+
+
+<script>
+$( document ).ready(function() {
+
+    d3.json('resources/data/2022-01-20_daily_activity.json', function(data) {
+        global = {}
+        
+        data = MG.convert.date(data, 'dateString');
+        global.data_players = data;
+                
+        createActivityChart();                
+    });
+     
+  
+  
+    function createActivityChart(legend){
+        if(legend == null){
+            legend = ['_1v1', '_2v2', '_3v3', '_4v4'];
+        }
+        document.getElementById('chartActivityMode').innerHTML = '';
+        
+        var markers = [{
+            'dateString': new Date('2021-10-28T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-11-15T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-11-29T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-12-09T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2022-01-20T12:00:00.000Z'),
+            'label': 'Patch'
+        }];
+
+        var activity_chart = {
+            title: "Daily active players per game mode",
+            data: global.data_players,
+            markers: markers, 
+            missing_is_hidden: true,
+            interpolate: d3.curveLinear,
+            full_width: true,
+            height: 200,
+            right: 20,
+            left: 60,
+            top: 60,
+            target: '#chartActivityMode',
+            x_axis_position: 'top',
+            x_accessor: 'dateString',
+            x_extended_ticks: false,
+            x_mouseover: '%Y-%m-%d, ',
+            y_accessor: ['_1v1', '_2v2', '_3v3', '_4v4'],
+            y_label: 'players',
+            y_extended_ticks: true,
+            legend: ['1v1', '2v2', '3v3', '4v4'],
+            legend_target: 'div#chartActivityMode_key',
+            colors: ['black', 'blue', 'red', 'grey'],
+            y_rollover_format: d => d.multiline_y_accessor.toLocaleString('cs-CZ'),
+            };
+
+        MG.data_graphic(activity_chart);
+    }
+
+
+////////////////////////////////////////
+
+    d3.json('resources/data/2022-01-20_daily_activity_service.json', function(data) {
+        global = {}
+        
+        data = MG.convert.date(data, 'dateString');
+        global.data_players2 = data;
+                
+        createActivityChart2();                
+    });
+         
+      
+      
+    function createActivityChart2(legend){
+        if(legend == null){
+            legend = ['steam', 'xbox'];
+        }
+        document.getElementById('chartActivityService').innerHTML = '';
+        
+        var markers = [{
+            'dateString': new Date('2021-10-28T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-11-15T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-11-29T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-12-09T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2022-01-20T12:00:00.000Z'),
+            'label': 'Patch'
+        }];
+
+        var activity_chart2 = {
+            title: "Daily active quickmatch players per service used",
+            data: global.data_players2,
+            markers: markers, 
+            missing_is_hidden: true,
+            interpolate: d3.curveLinear,
+            full_width: true,
+            height: 200,
+            right: 20,
+            left: 60,
+            top: 60,
+            target: '#chartActivityService',
+            x_axis_position: 'top',
+            x_accessor: 'dateString',
+            x_extended_ticks: false,
+            x_mouseover: '%Y-%m-%d, ',
+            y_accessor: ['steam', 'xbox'],
+            y_label: 'players',
+            y_extended_ticks: true,
+            legend: ['steam', 'xbox'],
+            legend_target: 'div#chartActivityService_key',
+            colors: ['black', 'blue'],
+            y_rollover_format: d => d.multiline_y_accessor.toLocaleString('cs-CZ'),
+            };
+
+        MG.data_graphic(activity_chart2);
+    }
+
+
+
+/////////////////////////////////////////////
+
+    d3.json('resources/data/2022-01-20_life_and_death.json', function(data) {
+        global = {}
+        
+        data = MG.convert.date(data, 'dateString');
+        global.data_players3 = data;
+                
+        createActivityChart3();                
+    });
+     
+  
+  
+    function createActivityChart3(){
+        document.getElementById('chartLifeDeath').innerHTML = '';
+        
+        var markers = [{
+            'dateString': new Date('2021-10-28T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-11-15T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-11-29T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2021-12-09T12:00:00.000Z'),
+            'label': 'Patch'
+        }, {
+            'dateString': new Date('2022-01-20T12:00:00.000Z'),
+            'label': 'Patch'
+        }];
+
+        var activity_chart3 = {
+            title: "New players, players gone inactive on particular day",
+            data: global.data_players3,
+            markers: markers, 
+            missing_is_hidden: true,
+            interpolate: d3.curveLinear,
+            full_width: true,
+            height: 200,
+            right: 20,
+            left: 60,
+            top: 60,
+            target: '#chartLifeDeath',
+            x_axis_position: 'top',
+            x_accessor: 'dateString',
+            x_extended_ticks: false,
+            x_mouseover: '%Y-%m-%d, ',
+            y_accessor: ['death_sum', 'birth'],
+            y_label: 'players',
+            y_extended_ticks: true,
+            legend: ['gone inactive', 'new'],
+            legend_target: 'div#chartLifeDeath_key',
+            colors: ['black', 'blue'],
+            area: [true, false],
+            y_rollover_format: d => d.multiline_y_accessor.toLocaleString('cs-CZ'),
+            };
+
+        MG.data_graphic(activity_chart3);
+        
+    }
+
+
+/////////////////////////////////////////
+
+
+
+
+    d3.csv('resources/data/2022-01-20_regions_modes.csv', function(error, rows) {
+        var iconsizes = {EU: 100, NA: 80, SA: 35, AFR: 20, Asia: 70, MidEast: 16, OCE: 32}
+
+        var data = [];
+        var cols = ['1v1', '2v2', '3v3', '4v4'];
+        rows.forEach(function(r){
+            cols.forEach(function(c){
+                var out = {};
+                out.region = r.region;
+                out.mode = c;
+                out.count = +r[c];
+                out.ratio = +r['has '+c];
+                out.size = iconsizes[r.region];
+                out.random = Math.random();
+                out.color = 'red';
+                
+                
+                data.push(out);
+            })
+        })
+
+        global.data_region_modes = data;
+        
+        MG.data_graphic({
+            title: 'Proportion of population in regions having played 10+ games of 1v1, 2v2, 3v3 and 4v4.',
+            data: global.data_region_modes,
+            chart_type: 'point',
+            y_accessor: 'ratio',
+            min_y_from_data: true,
+            min_y_from_data: true,
+            y_range: [0.3,0.8],
+            y_label: 'of population',
+            x_accessor: 'mode',
+            xgroup_accessor: 'region',
+            size_accessor: 'size',
+            size_domain: [0,100],
+            size_range: [4,10],
+            height:300,
+            width:950,
+            top: 30,
+            target: '#chartRegionModes',
+            baselines: [{value: 0.5, label: ''}],
+        })
+    })
+
+
+
+//////////////////////////////////////
+
+
+
+    d3.csv('resources/data/2022-01-20_survival_anal.csv', function(error, rows) {
+        var data = [];
+        var cols = rows.columns;
+        rows.forEach(function(r){
+            var out = {};
+            cols.forEach(function(c){
+                out[c] = +r[c];
+            });
+            data.push(out);
+        })
+        
+        global.data_survival = data;
+
+        vars1 = ['steam', 'xbox'];
+        vars2 = ['mixed', 'team', 'solo'];
+        var survival_chart1 = {
+            title: "Player retention by account platform",
+            data: global.data_survival,
+            area: false,
+            width: 500,
+            height: 300,
+            right: 100,
+            left: 80,
+            top: 40,
+            bottom: 60,
+            interpolate: d3.curveStep,
+            target: '#chartSurvival1',
+            x_axis_position: 'bottom',
+            y_axis_position: 'left',
+            x_accessor: 'days',
+             x_label: 'days',
+            x_extended_ticks: true,
+            y_accessor : vars1,
+            y_label: 'Retention probability',
+            y_extended_ticks: true,
+            yax_count: 10,
+            max_y : 1,
+            legend: vars1,
+            colors: ['black', 'blue'],
+            yax_format: d => d.toLocaleString('cs-CZ',{style: 'percent', minimumFractionDigits:0}),
+            y_rollover_format: d => d.multiline_y_accessor.toLocaleString('cs-CZ',{style: 'percent', minimumFractionDigits:1}),
+       
+        };
+            
+        var survival_chart2 = {
+            title: "Player retention by game modes played",
+            data: global.data_survival,
+            area: false,
+            width: 500,
+            height: 300,
+            right: 100,
+            left: 80,
+            top: 40,
+            bottom: 60,
+            interpolate: d3.curveStep,
+            target: '#chartSurvival2',
+            x_axis_position: 'bottom',
+            y_axis_position: 'left',
+            x_accessor: 'days',
+            x_label: 'days',
+            x_extended_ticks: true,
+            y_accessor: vars2,
+            y_label: 'Retention probability',
+            y_extended_ticks: true,
+            yax_count: 10,
+            max_y : 1,
+            legend: vars2,
+            colors: ['black', 'blue', 'red'],
+            yax_format: d => d.toLocaleString('cs-CZ',{style: 'percent', minimumFractionDigits:0}),
+            y_rollover_format: d => d.multiline_y_accessor.toLocaleString('cs-CZ',{style: 'percent', minimumFractionDigits:1}),
+       
+        };
+
+        MG.data_graphic(survival_chart1);
+        MG.data_graphic(survival_chart2);
+
+    })
+
+})    
+    
+</script>
+
+<style>
+circle.mg-points-mono{
+    fill: #4c78a8;
+    stroke: #202020;
+    stroke-opacity: 1;
+    fill-opacity: 1;
+    opacity: 1;
+}
+</style>    
+
+
+
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<script>
+$( document ).ready(function() {
+var svg = d3.select("#map-viz"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+// Map and projection
+var projection = d3.geoMercator()
+    .center([0, 20])                
+    .scale(145)                       
+    .translate([ width/2, height/2 ])
+
+
+// Create data for circles:
+var markers = [
+    {long: 12, lat: 50, size:86781, iconsize: 100}, // EU
+    {long: -100, lat: 40 , size:43318, iconsize: 80}, // NA
+    {long: -60, lat: -25 , size:8590, iconsize: 35}, // SA
+    {long: 20, lat: 5 , size:1141, iconsize: 20}, // AFR
+    {long: 95, lat: 35 , size:39877, iconsize: 70}, // Asia
+    {long: 42, lat: 30 , size:299, iconsize: 16}, // MidEast
+    {long: 145, lat: -28 , size:6276, iconsize: 32} // OCE
+];
+
+// Load external data and boot
+d3.json("https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json", function(data){
+
+    // Draw the map
+    svg.append("g")
+        .selectAll("path")
+        .data(data.features)
+        .enter()
+        .append("path")
+        .attr("fill", "#b8b8b8")
+        .attr("d", d3.geoPath().projection(projection))
+        .style("stroke", "black")
+        .style("opacity", .3)
+
+    var nodes = svg
+        .selectAll("myCircles")
+        .data(markers)
+        .enter()
+        .append("g");
+      
+
+    // Add circles:
+    nodes.append("image")
+        .attr("xlink:href", "resources/images/viz/location-person-svgrepo-com.svg")
+        .attr("x", function(d){ return projection([d.long, d.lat])[0] - d.iconsize/2 })
+        .attr("y", function(d){ return projection([d.long, d.lat])[1] - d.iconsize})
+        .attr("width", function(d){ return d.iconsize})
+        .style("fill", "#4c78a8")
+      ;
+        
+    nodes.append("text")   
+      .attr("dx", function(d){ return projection([d.long, d.lat])[0] })
+      .attr("dy", function(d){ return projection([d.long, d.lat])[1] + 12})
+      .attr("text-anchor", "middle")
+      .style("stroke", "black")
+      .text(function(d) { return d.size.toLocaleString('cs-CZ') });
+
+})
+});
+
+</script>
