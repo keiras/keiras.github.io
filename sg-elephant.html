@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stormgate 2024-02 Playtest Matchmaking Observations</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        const DataStore = {
+    };
+    </script>
+    <script src="resources/js/sg-2024/region-player-graph.js" defer></script>
+    <script src="resources/js/sg-2024/daily-matches-mmr.js" defer></script>
+    <script src="resources/js/sg-2024/faction-pref.js" defer></script>
+    <script src="resources/js/sg-2024/charts-basic.js" defer></script>
+
+    <link rel="stylesheet" href="resources/css/bootstrap-5-hacked.min.css" />
+    <style>
+        text {
+            font-family: sans-serif;
+            pointer-events: none; /* Makes text non-interactive */
+        }
+        .cluster-circle {
+            fill: #eee; /* Light blue background for clusters */
+            stroke-width: 1.5;
+        }
+        .player-label {
+            font-weight: bold;
+        }
+        .highlight {
+            fill: #333; /* Desaturated node color */
+            stroke: #333; /* Node border */
+            stroke-width: 2px;
+        }
+    </style>
+
+    <style>
+        .text-justified { text-align: justify; text-justify: inter-word; }
+
+        .section-label {
+            text-align: left;
+            font-variant: petite-caps;
+            font-weight: bold;
+        }
+
+        /* Horizontal line styling with text in the center */
+        .hr-sect {
+            display: flex;
+            flex-basis: 100%;
+            align-items: center;
+            color: rgba(0, 0, 0, 0.99);
+            margin: 8px 0px;
+        }
+        .hr-sect::before,
+        .hr-sect::after {
+            content: "";
+            flex-grow: 1;
+            background: rgba(0, 0, 0, 0.35);
+            height: 2px;
+            font-size: 0px;
+            line-height: 0px;
+            margin: 0px 8px;
+        }
+
+        /* misc */
+        a{
+            text-decoration: inherit;
+        }
+
+        .btn-xs{
+            padding: 0px 8px;
+            margin: 0px 1px;
+        }
+
+        p.text-justified > a:before{
+            content: '「';
+        }
+        p.text-justified > a:after {
+            content: '」';
+        }
+
+
+        /*['#ffffbf', '#fee08b', '#fdae61', '#f46d43', '#d53e4f'];*/
+        .highlight-color-1 {
+            background-color: #ffffbf;
+        }
+        .highlight-color-2 {
+            background-color: #fee08b;
+        }
+        .highlight-color-3 {
+            background-color: #fdae61;
+        }
+        .highlight-color-4 {
+            background-color: #f46d43;
+        }
+        .highlight-color-5 {
+            background-color: #d53e4f;
+        }
+
+        .highlight-color-inf {
+            background-color: #f0b3a5;
+        }
+        .highlight-color-vg {
+            background-color: #b4cde2;
+        }
+
+        </style>
+</head>
+<body>
+<div class="container" style="background-color:#f8f8f8;">
+    <div class="col-12 pt-2">
+        <h3 class="text-center">Stormgate 2024-02 Playtest Observations</h3>
+        <h6 class="text-center">by Martin Kryl (Keiras at Discord | <a href="https://linktr.ee/keiras_">linktr</a>) </h6>
+    </div>
+
+    <div class="hr-sect">
+        <a href="#matchmaking-quality"><button type="button" class="btn btn-outline-secondary btn-xs">Matchmaking Quality</button></a>
+        <a href="#faction-preference"><button type="button" class="btn btn-outline-secondary btn-xs">Faction Preference</button></a>
+        <a href="#mmr-convergence"><button type="button" class="btn btn-outline-secondary btn-xs">MMR Convergence</button></a>
+        <a href="#region-relations"><button type="button" class="btn btn-outline-secondary btn-xs">Cross-region Play</button></a>
+        <a href="#data"><button type="button" class="btn btn-outline-secondary btn-xs">Data</button></a>
+    </div>
+
+    <div id ="matchmaking-quality">
+        <p class="section-label">Matchmaking quality</p>
+        <p class="text-justified">There has been a <abbr title="all players being in the same leaderboard and being able to play each other">global</abbr> 1v1 matchmaking available in the Elephant stage playtest period. From the comments made by Frost Giant developers, the matchmaker should consider <strong>player skill</strong> (which is traditionally done) as well as their <strong>ping</strong> to different servers in order to make optimal pairings.</p>
+         <p class="text-justified">The chart below shows the <strong>number of matches</strong> played each day grouped into MMR ranges. There are two qualitative metrics constructed to help with monitoring the matchmaking quality: <strong>difference in MMR</strong> and <strong>difference in pings</strong> of matched players. Lower values are desired. Five categories are used in each metric to help with the interpretation of the data. Stacked charts show proportions of matches in each category.</p>
+
+        <div id="container-viz-matches" style="position: relative;">
+            <svg id="viz-daily-matches-mmr"></svg>
+        </div>
+
+        <p class="text-justified">Until the end of Steam Next Fest (open beta stage), 1500 MMR is seen as the dominant bin. This is primarily due to influx of new players, which all start at this MMR. Experimentally, the system seems to be based on Elo with parameters <code>K=20.4, c=420</code>. In this context, the quality range thresholds correspond with implied win chances of <span class="highlight-color-1">&gt;43.2%</span>, <span class="highlight-color-2">&gt;36.6%</span>, <span class="highlight-color-3">&gt;25%</span>, <span class="highlight-color-4">&gt;10%</span>. </p>
+
+        <p class="text-justified">There has been a noticeable shift in histogram distribution after the open beta ended and the player count dropped significantly. All tracked quantiles shifted to the right with median MMR (q50) jumping to 1600. Apart from that, MMR diff quality metric worsened as well, while Ping diff stayed the same throughout the stage. </p>
+    </div>
+
+    <hr />
+
+    <div id ="faction-preference" >
+        <p class="section-label">Faction preference</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <svg id="viz-faction-preference"></svg>
+        </div>
+        <div class="col">
+            <p class="text-justified">There were two playable factions in this stage: the human-like <span class="highlight-color-vg">Vanguard</span> and the demonic <span class="highlight-color-inf">Infernals</span>. There was a clear preference for players to choose and stick with only one faction — 75% of players played mostly (more than 80% of their games) with their preferred faction.</p>
+            <p class="text-justified">In <abbr title="who played at least 10 matches in total">all players</abbr> cohort (of 12,579), <span class="highlight-color-vg">Vanguard</span> were the favorites. But when looking at the <abbr title="by ranking points at the end of playtest">Top 100</abbr> players, the trend was reversed.</p>
+        </div>
+    </div>
+
+
+    <div id ="mmr-convergence">
+        <p class="section-label">MMR convergence</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <svg id="viz-games-before-mmr-convergence"></svg>
+        </div>
+        <div class="col">
+            <p class="text-justified">MMR systems tend to have a mechanism to boost point gains to more quickly settle new players into suitable MMR regions. This volatility is reduced over time until the MMR stabilizes. This chart shows the distribution of the number of games needed to <abbr title="having the estimated multiplier of <1.02 for 3 consecutive matches">stabilize MMR</abbr>.</p>
+            <p class="text-justified">On average, it took 42 games for MMR to stabilize, and 95% of the <abbr title="here each player has an entry for each of the played race">players*</abbr> never reached that point.</p>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="region-relations">
+        <p class="section-label">Cross-region Play</p>
+        <p class="text-justified">Players are not bound to their regional servers, but rather can play with anyone provided the matchmaker can find a middle ground with reasonable ping. The chart below shows a systematic map of the <strong>Top 100</strong> players and their <strong><abbr title="based on lowest median ping">primary</abbr> regions</strong>. On hover, all the players that have played with the selected player are highlighted. The size of the highlighted dot indicates the number of games played.</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <svg id="viz-region-relations"></svg>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <svg id="viz-degree-separation"></svg>
+            <svg id="viz-servers-histo"></svg>
+        </div>
+        <div class="col">
+            <p class="text-end">※ Servers with no players having it as their primary are not shown.</p>
+
+            <p class="text-justified">The <strong>Top 100 players</strong> do not appear to have issues getting matches between regions and reaching most other competitors. Apart from 8 pairs, everyone had a direct match with each other or by proxy via another player. The 8 pairs could be an artifact created by arbitrarily cutting the line at the top 100.</p>
+
+            <p class="text-justified">In general, it seems reasonable to expect a fair <strong>exchange of MMR between regions</strong> in this global system.</p>
+
+            <p class="text-justified">The last chart shows the number of different servers that Top 100 players have played on. The matchmaker appears to have a soft limit on the maximum ping allowed (125 ms), with some cases of higher ping (up to 210 ms). This, together with a low sample size, might distort the results slightly. Nevertheless, the common number of <strong>reachable servers</strong> seems to be 4-7 for top players.</p>
+
+            <div class="text-end"> <img src="resources/images/shadowflyer.png" height="100px" width="auto"/></div>
+        </div>
+    </div>
+
+<hr />
+
+    <div id ="data" >
+        <p class="text-justified">The data used in these charts were obtained from <a href="https://stormgateworld.com/api/">Stormgate World</a> using the <code>matches</code> and <code>leaderboards/ranked_1v1</code> endpoints. Data were collected after the conclusion of the Elephant stage. From my understanding, some of the matches played during the Steam Next Fest are missing, and there is nothing that can be done about that.</p>
+        <p class="text-justified">In case anyone is interested, I can provide the processed dataset (in DuckDB) for further analysis or validation. The underlying data for the charts on this page are included in the repository.</p>
+        <p class="text-justified">Thanks to <a href="https://frostgiant.com/">Frost Giant</a> for making the game and to <a href="https://casuals.co/">The CASUALS</a> for making the data available via the Stormgate World project ❤</p>
+    </div>
+<hr />
+
+</div>
+</body>
+</html>
