@@ -308,7 +308,7 @@
 
 <script>
 $( document ).ready(function() {
-d3.json('resources/data/2022-01-20_players_modes.json', function(data) {     
+d3.json('resources/data/aoe4-2022/2022-01-20_players_modes.json', function(data) {     
     const sets = UpSetJS.extractSets(data);
         
     var x = UpSetJS.render(document.getElementById("fig-sets"), { 
@@ -348,7 +348,7 @@ d3.json('resources/data/2022-01-20_players_modes.json', function(data) {
 <script>
 $( document ).ready(function() {
 
-    d3.json('resources/data/2022-01-20_daily_activity.json', function(data) {
+    d3.json('resources/data/aoe4-2022/2022-01-20_daily_activity.json', function(data) {
         global = {}
         
         data = MG.convert.date(data, 'dateString');
@@ -413,7 +413,7 @@ $( document ).ready(function() {
 
 ////////////////////////////////////////
 
-    d3.json('resources/data/2022-01-20_daily_activity_service.json', function(data) {
+    d3.json('resources/data/aoe4-2022/2022-01-20_daily_activity_service.json', function(data) {
         global = {}
         
         data = MG.convert.date(data, 'dateString');
@@ -479,7 +479,7 @@ $( document ).ready(function() {
 
 /////////////////////////////////////////////
 
-    d3.json('resources/data/2022-01-20_life_and_death.json', function(data) {
+    d3.json('resources/data/aoe4-2022/2022-01-20_life_and_death.json', function(data) {
         global = {}
         
         data = MG.convert.date(data, 'dateString');
@@ -546,7 +546,7 @@ $( document ).ready(function() {
 
 
 
-    d3.csv('resources/data/2022-01-20_regions_modes.csv', function(error, rows) {
+    d3.csv('resources/data/aoe4-2022/2022-01-20_regions_modes.csv', function(error, rows) {
         var iconsizes = {EU: 100, NA: 80, SA: 35, AFR: 20, Asia: 70, MidEast: 16, OCE: 32}
 
         var data = [];
@@ -597,7 +597,7 @@ $( document ).ready(function() {
 
 
 
-    d3.csv('resources/data/2022-01-20_survival_anal.csv', function(error, rows) {
+    d3.csv('resources/data/aoe4-2022/2022-01-20_survival_anal.csv', function(error, rows) {
         var data = [];
         var cols = rows.columns;
         rows.forEach(function(r){
