@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>BattleAces 2024-07 Playtest Observations</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        const DataStore = {
+    };
+    </script>
+    <script src="resources/js/ba-202407/charts-basic.js" defer></script>
+    <script src="resources/js/ba-202407/unit-pick-rates.js" defer></script>
+    <script src="resources/js/ba-202407/double-t3.js" defer></script>
+
+    <link rel="stylesheet" href="resources/css/bootstrap-5-hacked.min.css" />
+
+    <style>
+        .text-justified { text-align: justify; text-justify: inter-word; }
+
+        .section-label {
+            text-align: left;
+            font-variant: petite-caps;
+            font-weight: bold;
+        }
+
+        /* Horizontal line styling with text in the center */
+        .hr-sect {
+            display: flex;
+            flex-basis: 100%;
+            align-items: center;
+            color: rgba(0, 0, 0, 0.99);
+            margin: 8px 0px;
+        }
+        .hr-sect::before,
+        .hr-sect::after {
+            content: "";
+            flex-grow: 1;
+            background: rgba(0, 0, 0, 0.35);
+            height: 2px;
+            font-size: 0px;
+            line-height: 0px;
+            margin: 0px 8px;
+        }
+
+        /* misc */
+        a{
+            text-decoration: inherit;
+        }
+
+        .btn-xs{
+            padding: 0px 8px;
+            margin: 0px 1px;
+        }
+
+        p.text-justified > a:before{
+            content: '「';
+        }
+        p.text-justified > a:after {
+            content: '」';
+        }
+
+        </style>
+</head>
+<body>
+<div class="container" style="background-color:#f8f8f8;">
+    <div class="col-12 pt-2">
+        <h3 class="text-center">Battle Aces July 2024 Playtest 1v1 Observations</h3>
+        <h6 class="text-center">by Martin Kryl (Keiras at Discord | <a href="https://linktr.ee/keiras_">linktr</a>) </h6>
+    </div>
+
+    <div class="hr-sect">
+        <a href="#top-ace-population"><button type="button" class="btn btn-outline-secondary btn-xs">Top Ace population</button></a>
+        <a href="#unit-pick-rates"><button type="button" class="btn btn-outline-secondary btn-xs">Unit pick rates</button></a>
+        <a href="#double-t3"><button type="button" class="btn btn-outline-secondary btn-xs">Double T3 in decks</button></a>
+        <a href="#data"><button type="button" class="btn btn-outline-secondary btn-xs">Data</button></a>
+    </div>
+
+    <div id ="top-ace-population">
+        <p class="section-label">Top Ace 1v1 population</p>
+        <p class="text-justified"><a href="https://www.playbattleaces.com/">Battle Aces</a> has a ranking ladder system consisting of different leagues with Top Ace containing the best players. Once a player reaches Top Ace, they cannot be demoted or removed from the league. The leaderboard containing all Top Ace players has been publicly available <strong>since July 4 (day 10)</strong>.</p>
+
+        <div id="container-viz-topace" class="row row-cols-2" >
+            <svg id="viz-daily-active-topace" class="col p-0"></svg>
+
+            <div class="col">
+                <p class="text-justified">The chart shows the <strong>number of <abbr title="=having their 1v1 rating changed that day">active</abbr> TA players</strong> each day and <strong>number of TA players</strong> on the leaderboard that day. The total number has been steadily increasing throughout the playtest. It's impossible to determine whether this is due to new people trickling in with the invite waves or if it has to do with Top Ace taking long to achieve.</p>
+                <p class="text-justified"><strong>Daily activity</strong> has been floating <strong>around 50% of all TA</strong> players, which could indicate good retention even after hitting the main obvious goal (reaching TA). There is a drop in activity in the last 3 days. A similar drop could be seen in the last days of Stormgate beta stages as well, so I'd consider this normal.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id ="unit-pick-rates">
+        <p class="section-label">Unit pick rates</p>
+        <p class="text-justified">The game's major mechanic is the deck-building system where players choose units to play with. The chart below shows the daily <strong>pick rate</strong> of units in the Top Ace players' decks and the fluctuations over time.</p>
+
+        <div id="container-viz-unit-picks" class="row row-cols-2">
+            <svg id="viz-unit-picks" class="col p-0"></svg>
+
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span id="hint-span" class="text-muted"> ★ click on units for highlight </span>
+
+                    <select name="techTierSlug" id="techTierSlug" class="form-select form-select-sm" style="width: 175px">
+                        <option value="core" selected>Core</option>
+                        <option value="foundry">Fountry</option>
+                        <option value="advancedfoundry">Advanced Foundry</option>
+                        <option value="starforge">Starforge</option>
+                        <option value="advancedstarforge">Advanced Starforge</option>
+                    </select>
+                </div>
+
+                <div class="control-panel row" id="unit-controls">
+                    <!-- Unit buttons will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <p class="text-justified">In <strong>Core</strong> unit set, <strong><span class="unit-inline" data-slug="scorpion", data-sluggroup="core">Scorpion</span></strong> saw a massive jump in popularity once it was buffed in <a href="https://www.reddit.com/r/BattleAces/comments/1dw7bzp/balance_update_estimated_78/">patch #3</a> and it remained a top pick even after half-reverting the buff in <a href="https://www.reddit.com/r/BattleAces/comments/1dzd2ei/balance_update_estimated_thursday_711/">patch #4</a>. <strong><span class="unit-inline" data-slug="blinkhunter", data-sluggroup="core">Blinkhunter</span></strong> persisted as the most common anti-air option and formed a meta combo together with <strong><span class="unit-inline" data-slug="scorpion", data-sluggroup="core">Scorpion</span></strong>. The feared aggro unit <strong><span class="unit-inline" data-slug="wasp", data-sluggroup="core">Wasp</span></strong> was losing traction even before the nerf in Patch #3, possibly because players figuring out the defense.</p>
+        <p class="text-justified">Even though <strong>Foundry</strong> offers 12 options, 6 of those were very seldom picked and the diversity was thus rather low. Most notable movements were with <strong><span class="unit-inline" data-slug="destroyer", data-sluggroup="foundry">Destroyer</span></strong> and <strong><span class="unit-inline" data-slug="kingcrab", data-sluggroup="foundry">King Crab</span></strong> which both received buff in the latest patch. <span class="unit-inline" data-slug="raider", data-sluggroup="foundry">Raider</span></strong>, another feared harass unit, has been completely irrelevant.</p>
+        <p class="text-justified">The <strong>Starforge</strong> picks were mostly dominated by <strong><span class="unit-inline" data-slug="mammoth", data-sluggroup="starforge">Mammoth</span></strong>, solid ground fighter option, and <strong><span class="unit-inline" data-slug="airship", data-sluggroup="starforge">Airship</span></strong>, default flying anti-air solution.</p>
+        <p class="text-justified"> <strong>Advanced Foundry</strong> did not see many shifts. There is a trend of <strong><span class="unit-inline" data-slug="heavyballista", data-sluggroup="advancedfoundry"Heavy Ballista</span></strong> losing popularity probably in favor of <strong><span class="unit-inline" data-slug="advancedblink", data-sluggroup="advancedfoundry">Advanced Blink</span></strong>, however it is hard to pinpoint this to any particular patch change.</p>
+        <p class="text-justified"><strong>Advanced Starforge</strong> slot was dominated by <strong><span class="unit-inline" data-slug="valkyrie", data-sluggroup="advancedstarforge">Valkyrie</span></strong> even after its nerf and subsequent change in patches. The changes on Valkyrie and Airship in patch #3 allowed <strong><span class="unit-inline" data-slug="katbus", data-sluggroup="advancedstarforge">Katbus</span></strong> to see more play as it wasn't so heavily countered by the common picks.</p>
+
+
+    </div>
+
+    <hr />
+
+
+    <div id="double-t3">
+        <p class="section-label">Double T3 picks</p>
+
+        <div id="container-viz-double-t3" class="row row-cols-2">
+            <div class="col">
+                <p class="text-justified">There are two slots in the deck serving as <strong>wildcard slots</strong>. Players can pick one additional T2 or T3 unit from Foundry and one from Starforge tech. This leads to a question, whether players tend to focus on extra T2 to have more options in the midgame stage, or if they value more power later in the game with two T3 units in the deck.</p>
+                <p class="text-justified">The table shows how often players decided to pick double T3 units in a particular slot and also what was the most popular combination of T3 units on a given day.</p>
+                <p class="text-justified"><strong>Players heavily favored having two T2 units</strong>. On average only ~15% of decks contained the double T3 pick in either of the two tech paths.</p>
+                <p class="text-justified">Worth noting is that if there were double T3 picks, the units used in the <strong>combos were not very varied</strong>. Foundry tech path was dominated by <span class="unit-inline">Behemoth + Heavy Ballista</span> as the most frequently utilized combo.</p>
+                <p class="text-justified">Starforge tech has seen a bit more variance, however, Valkyrie has been a staple in those combos—possibly with the goal to deal with any potential air threats and then using the other unit as the tech of choice. Also, since the <span class="unit-inline">Katbus</span> kept getting more popular as mentioned above, picking  <span class="unit-inline">Katbus + Valkyrie</span> has become a meta pick (up to 75% of all double Advanced Starforge decks) in the last few days of the test period.</p>
+            </div>
+
+            <div class="col">
+                <table class="table table-wildcards" id="wildcards-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="2" class="text-center">Double T3 tech</th>
+                            <th colspan="2" class="text-center background-1">Top Combo</th>
+                            <th colspan="2" class="text-center background-2">Top Combo</th>
+                        </tr>
+                        <tr>
+                            <th class="text-end">Date</th>
+                            <th class="text-center background-1">Foundry</th>
+                            <th class="text-center background-2">Starforge</th>
+                            <th class="text-center background-1">Foundry</th>
+                            <th class="text-center background-1"><abbr title="Prevalence of the combo in double T3 Foundry decks">prev.</abbr></th>
+                            <th class="text-center background-2">Starforge</th>
+                            <th class="text-center background-2"><abbr title="Prevalence of the combo in double T3 Starforge decks">prev.</abbr></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <hr />
+
+    <div id ="data" >
+        <p class="text-justified">The data used in these charts were obtained from <a href="https://www.playbattleaces.com/leaderboards/1v1">Battle Aces 1v1 Leaderboards</a>. Data were collected once per hour as the cache prevented more frequent updates.</p>
+        <p class="text-justified">The data contained only the current ranking and the last unit deck used. I preprocessed the data on the assumption that an active player will have their rating changed in some way between any two consecutive data points. I assumed that the deck displayed on the leaderboard after the rating change was the deck used in the games. There might be some inconsistencies since the deck is shared between game modes, so a player active in both 1v1 and 2v2 in the same hour could have their deck wrongly identified. Charts only consider decks that have been played that day.</p>
+        <p class="text-justified">In case anyone is interested, I can provide the processed dataset (in DuckDB) for further analysis or validation. The underlying data for the charts on this page are included in the repository.</p>
+        <p class="text-justified">Thanks to <a href="https://uncappedgames.com/">Uncapped Games</a> for making a cool RTS and providing the necessary data.</p>
+    </div>
+
+    <hr />
+</div>
+
+
+<style>
+.control-panel {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.unit-button {
+    display: grid;
+    grid-template-columns: 42px auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    cursor: pointer;
+}
+
+.unit-button img {
+    width: 34px;
+    height: 34px;
+    filter: invert(100%) ;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+
+}
+
+.unit-button img.selected,
+.unit-selected{
+    filter: invert(100%) invert(43%) sepia(72%) saturate(365%) hue-rotate(164deg) brightness(96%) contrast(90%) !important;
+}
+
+.unit-button img.unit-highlighted {
+    filter: invert(100%) invert(11%) sepia(92%) saturate(7500%) hue-rotate(359deg) brightness(105%) contrast(108%) !important;
+}
+
+.unit-label {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.unit-stats {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-size: 12px;
+    color: #555;
+}
+
+.unit-icon {
+    width: 34px;
+    height: 34px;
+    filter: invert(100%) ;
+}
+
+.table-wildcards tr>* {
+    padding: 0px 4px;
+    vertical-align: middle;
+}
+
+.table-wildcards *.text-end {
+    padding-right: 10px;
+}
+
+.background-1{
+    background-color: #e8e8e8 !important;
+}
+.background-2{
+}
+
+.unit-inline{
+    font-weight: normal;
+    font-variant: small-caps;
+    background-color: #e8e8e8;
+}
+
+</style>
+
+</body>
+</html>
